@@ -16,7 +16,6 @@ export const createNewSecret = async ({
 	expirationDate,
 	oneTimeView,
 }) => {
-	console.log(expirationDate)
 	const { data, error } = await supabase.from("secrets").insert({
 		secretId,
 		encryptedMessage,
@@ -31,3 +30,30 @@ export const createNewSecret = async ({
 	}
 	return data
 };
+
+export const getSecretMessage = async (messageId) => {
+	if (!messageId) return null;
+	const { data, error } = await supabase.from("secrets").select().eq("secretId", messageId)
+	if (error) {
+		console.log(error)
+		throw new Error(error.message)
+	}
+
+	return data;
+}
+
+export const deleteSecretBySecretId = async (secretId) => {
+	if (!secretId) return
+
+	const { data, error } = await supabase
+		.from('secrets')
+		.delete()
+		.match({ secretId })
+
+		if (error) {
+			console.log(error)
+			throw new Error(error.message)
+		}
+	
+		return data;
+}

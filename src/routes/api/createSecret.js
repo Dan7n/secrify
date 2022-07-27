@@ -17,7 +17,9 @@ export async function POST({ request }) {
 		if (!body || !body.secretText || !body.secretText.trim()) {
 			return {
 				stats: 400,
-				body: "Please return a valid secret body",
+				body: {
+					message: "Please return a valid secret body"
+				},
 			};
 		}
 

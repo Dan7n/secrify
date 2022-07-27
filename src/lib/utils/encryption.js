@@ -18,3 +18,8 @@ export const decryptMessage = (encryptedMessage) => {
 	);
 	return bytes.toString(CryptoJS.enc.Utf8);
 };
+
+export const shouldSecretBeDeleted = (secret) => {
+	if (!secret) return true
+	return secret.oneTimeView
+}
