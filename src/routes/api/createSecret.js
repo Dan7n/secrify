@@ -3,10 +3,14 @@ import { supabase } from "../../lib/db/supabase";
 // const {supabase} = await import("./../../db/")
 import dotenv from "dotenv";
 dotenv.config();
+
 import { encryptMessage } from "./../../lib/utils/encryption";
+import { createNewSecret } from "./../../lib/db/supabase"
+
 
 export async function POST({ request }) {
 	try {
+
 		const secretId = generateUID();
 		const body = await request.json();
 
@@ -25,7 +29,8 @@ export async function POST({ request }) {
             oneTimeView: body.oneTimeView
 		};
 
-        console.log("HERE")
+		const res = await createNewSecret(secretData)
+		console.log(res)
 
 		return {
 			status: 200,
@@ -35,7 +40,9 @@ export async function POST({ request }) {
 		console.log(error);
 		return {
 			status: 500,
-			body: error.message,
+			body: {
+				message: error.message
+			},
 		};
 	}
 }
