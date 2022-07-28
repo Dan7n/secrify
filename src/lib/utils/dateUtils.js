@@ -8,9 +8,11 @@ export const hasSecretExpired = (secret) => {
     const expirationDate = new Date(secret.expirationDate)
     const now = new Date()
 
-    if (expirationDate < now) return {
-        expired: true,
-        reason: "Expiration date has passed"
+    if (expirationDate > now) {
+        return {
+            expired: true,
+            reason: "Expiration date has passed"
+        }
     }
 
     return {

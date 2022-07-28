@@ -10,14 +10,12 @@
 	import Toast from "../components/Toast.svelte";
 	import LottieSuccess from "../components/LottieSuccess.svelte";
 	import LottieConfetti from "../components/LottieConfetti.svelte";
-
+	import CopyButton from "../components/CopyButton.svelte";
 
 	// Utils
-	import { success, danger } from "./../lib/utils/toast";
-	import { page } from "$app/stores";
+	import { danger } from "./../lib/utils/toast";
 
 	let currentPageUrl;
-
 	onMount(() => {
 		if (!window) return;
 		currentPageUrl = window.location;
@@ -32,8 +30,7 @@
 	let selectedDuration = dropdownOptions[0].value;
 	let secretText = "";
 	let oneTimeView = true;
-	// let secretId = null;
-	let secretId = "l63cd8xmxvu9gbsd5xo";
+	let secretId;
 
 	const sendRequest = async () => {
 		if (!secretText || !secretText.trim())
@@ -51,14 +48,12 @@
 			const res = await req.json();
 			if (!req.ok) throw new Error(res.message || "Something went wrong");
 			secretId = res.secretId;
-			console.log(res);
 		} catch (error) {
 			danger(error.message);
 		}
 	};
 </script>
 
-<h1>Secrify</h1>
 <main>
 	{#if !secretId}
 		<section id="scrifyBody" in:fade out:fly={{ x: 20, duration: 400 }}>
@@ -70,7 +65,7 @@
 		</section>
 	{/if}
 	{#if secretId && currentPageUrl}
-	<LottieConfetti />
+		<LottieConfetti />
 		<section
 			in:fly={{ y: 200, duration: 2000, delay: 400 }}
 			out:fade
@@ -85,17 +80,15 @@
 					decrypt the secret message:
 				</p>
 				<code>{currentPageUrl}{secretId}</code>
+				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99"
+					>Copy URL</CopyButton
+				>
 			</div>
 		</section>
 	{/if}
 </main>
 
 <style lang="scss">
-	h1 {
-		font-size: 3rem;
-		text-align: center;
-		margin-top: 4rem;
-	}
 	main {
 		width: 100%;
 		height: calc(100vh - 4rem);
@@ -124,6 +117,7 @@
 		gap: 1.9rem;
 		position: relative;
 		z-index: 20;
+		margin-top: -20rem;
 
 		code {
 			margin-top: 1rem;

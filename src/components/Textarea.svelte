@@ -1,10 +1,12 @@
 <script>
 	export let secretText;
+	export let readonly = false
+	export let labelText = "What text would you like to secrify?"
 </script>
 
 <label for="secretText" class="secretTextContainer">
-	<p>What text would you like to secrify?</p>
-	<textarea id="secretText" bind:value={secretText} />
+	<p>{labelText}</p>
+	<textarea id="secretText" bind:value={secretText} readonly={readonly} />
 </label>
 
 <style lang="scss">
