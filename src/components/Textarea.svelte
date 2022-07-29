@@ -41,6 +41,13 @@
 		font-size: inherit;
 		font-family: inherit;
 		padding: 8px;
+		border: none;
 		border-radius: 3px;
+		transition: all 400ms ease;
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+		}
 	}
 </style>

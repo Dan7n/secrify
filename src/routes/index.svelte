@@ -95,7 +95,7 @@
 	main {
 		width: 100%;
 		height: 100%;
-		padding-top: 6rem;
+		padding-top: 5rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
