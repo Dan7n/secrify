@@ -14,6 +14,7 @@
 
 	// Utils
 	import { danger } from "./../lib/utils/toast";
+	import Information from "../components/Information.svelte";
 
 	let currentPageUrl;
 	onMount(() => {
@@ -31,10 +32,13 @@
 	let secretText = "";
 	let oneTimeView = true;
 	let secretId;
+	let isTextareaError
 
 	const sendRequest = async () => {
-		if (!secretText || !secretText.trim())
+		if (!secretText || !secretText.trim()) {
+			isTextareaError = true
 			return danger("Please add a valid secret body");
+		}
 
 		const requestBody = { secretText, selectedDuration, oneTimeView };
 		const opitonsPost = {
@@ -57,7 +61,8 @@
 <main>
 	{#if !secretId}
 		<section id="scrifyBody" in:fade out:fly={{ x: 20, duration: 400 }}>
-			<Textarea bind:secretText />
+			<Information />
+			<Textarea bind:secretText isTextareaError={isTextareaError}  />
 			<Dropdown options={dropdownOptions} bind:selected={selectedDuration} />
 			<Checkbox bind:oneTimeView />
 			<SubmitBtn handleSubmit={sendRequest} />
@@ -80,7 +85,8 @@
 					decrypt the secret message:
 				</p>
 				<code>{currentPageUrl}{secretId}</code>
-				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99">Copy URL</CopyButton
+				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99"
+					>Copy URL</CopyButton
 				>
 			</div>
 		</section>
@@ -91,7 +97,7 @@
 	main {
 		width: 100%;
 		height: 100%;
-		padding-top: 8rem;
+		padding-top: 6rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -104,7 +110,7 @@
 			justify-content: center;
 			align-items: stretch;
 			flex-direction: column;
-			gap: 3rem;
+			gap: 2rem;
 		}
 	}
 

@@ -2,7 +2,7 @@
 	export let handleSubmit;
 </script>
 
-<button id="submitBtn" on:click={handleSubmit}>Secrify</button>
+<button id="submitBtn" on:click={handleSubmit}>🔏 Secrify</button>
 
 <style lang="scss">
 	#submitBtn {
@@ -13,6 +13,8 @@
 		background-color: #c7d2fe;
 		transition: all 400ms ease;
 		cursor: pointer;
+		text-align: center;
+		border-radius: 4px;
 
 		&:hover {
 			background-color: #e0e7ff;

@@ -33,11 +33,6 @@
 
 	let isSecretFound = getSecretFromDb();
 
-	const handleCopySecret = (secretMessage) => {
-		navigator.clipboard.writeText(secretMessage);
-		success("Secret successfully copied to clipboard");
-	};
-
 	onMount(async () => {
 		isSecretFound = await getSecretFromDb();
 		console.log({ isSecretFound });
@@ -107,6 +102,10 @@
 
 		h1 {
 			font-size: 1.7rem;
+			@media screen and (max-width: 600px) {
+				font-size: 1.4rem;
+				padding-bottom: 1rem;
+			}
 		}
 
 		h1.whitespace {

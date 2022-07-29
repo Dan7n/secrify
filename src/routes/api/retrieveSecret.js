@@ -34,7 +34,7 @@ export async function POST({ request }) {
     const encryptedMessage = data[0]?.encryptedMessage
     const decrypted = decryptMessage(encryptedMessage)
     const shouldBeDeleted = shouldSecretBeDeleted(data[0])
-    console.log({shouldBeDeleted})
+
     if (shouldBeDeleted) {
         await deleteSecretBySecretId(data[0]?.secretId)
     }

@@ -1,12 +1,29 @@
 <script>
 	export let secretText;
-	export let readonly = false
-	export let labelText = "What text would you like to secrify?"
+	export let readonly = false;
+	export let labelText = "What text would you like to secrify?";
+	export let isTextareaError = false;
+
+	const handleChange = (e) => {
+		const { value } = e.target;
+		if (isTextareaError && value.length !== 0) {
+			isTextareaError = false;
+		} else {
+			isTextareaError = true;
+		}
+	};
 </script>
 
 <label for="secretText" class="secretTextContainer">
 	<p>{labelText}</p>
-	<textarea id="secretText" bind:value={secretText} readonly={readonly} />
+	<textarea
+		id="secretText"
+		on:change={handleChange}
+		bind:value={secretText}
+		{readonly}
+		style="border-color: {isTextareaError ? '#d90429' : 'transparent'};"
+		spellcheck="false"
+	/>
 </label>
 
 <style lang="scss">
@@ -26,9 +43,6 @@
 		font-size: inherit;
 		font-family: inherit;
 		padding: 8px;
-		border: none;
-		&:focus {
-			border: none;
-		}
+		border-radius: 3px;
 	}
 </style>

@@ -1,4 +1,12 @@
-<h1 class="header-logo">
+<script>
+	import { goto } from '$app/navigation';
+
+	const handleClickOnLogo = () => {
+		goto("/");
+	};
+</script>
+
+<h1 class="header-logo" on:click={handleClickOnLogo}>
 	Secrify<span class="bar-code">BAR</span>
 </h1>
 <slot />
@@ -28,6 +36,7 @@
 		width: 100%;
 		font-family: "Monoton", cursive;
 		font-weight: 100;
+		cursor: pointer;
 	}
 	.bar-code {
 		font-family: "Libre Barcode 39", cursive;

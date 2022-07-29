@@ -9,7 +9,6 @@ const supabaseAnonKey = process.env.SVELTE_APP_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-//{ secretText: '', selectedDuration: 1800000, oneTimeView: true }
 export const createNewSecret = async ({
 	secretId,
 	encryptedMessage,
