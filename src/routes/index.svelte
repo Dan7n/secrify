@@ -1,5 +1,6 @@
 <script>
 	import { fade, fly } from "svelte/transition";
+	import { quintOut } from "svelte/easing";
 	import { onMount } from "svelte";
 
 	// Components
@@ -17,7 +18,9 @@
 	import Information from "../components/Information.svelte";
 
 	let currentPageUrl;
+	let readyToAnimate = false;
 	onMount(() => {
+		readyToAnimate = true;
 		if (!window) return;
 		currentPageUrl = window.location;
 	});
@@ -56,40 +59,56 @@
 	};
 </script>
 
-<main>
-	{#if !secretId}
-		<section id="scrifyBody" in:fade out:fly={{ x: 20, duration: 400 }}>
-			<Information />
-			<Textarea bind:secretText  />
-			<Dropdown options={dropdownOptions} bind:selected={selectedDuration} />
-			<Checkbox bind:oneTimeView />
-			<SubmitBtn handleSubmit={sendRequest} />
-			<Toast />
-		</section>
-	{/if}
-	{#if secretId && currentPageUrl}
-		<LottieConfetti />
-		<section
-			in:fly={{ y: 200, duration: 2000, delay: 400 }}
-			out:fade
-			class="sucessMessage"
-		>
-			<div>
-				<LottieSuccess />
+{#if readyToAnimate}
+	<main>
+		{#if !secretId}
+			<section
+				id="scrifyBody"
+				in:fly={{ y: -30, duration: 1200, easing: quintOut }}
+				out:fly={{ x: 20, duration: 400 }}
+			>
+				<Information />
+				<Textarea bind:secretText />
+				<Dropdown options={dropdownOptions} bind:selected={selectedDuration} />
+				<Checkbox bind:oneTimeView />
+				<SubmitBtn handleSubmit={sendRequest} />
+			</section>
+		{/if}
+		{#if secretId && currentPageUrl}
+			<div class="confetti-container">
+				<LottieConfetti />
 			</div>
-			<div class="sucessMessage__inner">
-				<p>
-					Your secret has successfully been created! Visit the following URL to
-					decrypt the secret message:
-				</p>
-				<code>{currentPageUrl}{secretId}</code>
-				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99"
-					>Copy URL</CopyButton
-				>
-			</div>
-		</section>
-	{/if}
-</main>
+			<section
+				in:fly={{ y: 200, duration: 2000, delay: 400 }}
+				out:fade
+				class="sucessMessage"
+			>
+				<div>
+					<LottieSuccess />
+				</div>
+				<div class="sucessMessage__inner">
+					<p>
+						Your secret has successfully been created! Visit the following URL
+						to decrypt the secret message:
+					</p>
+					<code>{currentPageUrl}{secretId}</code>
+					<CopyButton
+						textToCopy={currentPageUrl + secretId}
+						color="linear-gradient(to left, hsl(152, 81%, 90%) 0%, hsl(152, 81%, 83%) 100%)"
+						>Copy URL</CopyButton
+					>
+					<p
+						class="new-secret"
+						in:fly={{ x: 100, duration: 2000, delay: 1000 }}
+					>
+						Click <a href="/">here</a> to create a new secret.
+					</p>
+				</div>
+			</section>
+		{/if}
+		<Toast />
+	</main>
+{/if}
 
 <style lang="scss">
 	main {
@@ -102,6 +121,10 @@
 		flex-direction: column;
 		gap: 5rem;
 
+		@media screen and (max-width: 768px) {
+			padding-inline: 1rem;
+		}
+
 		#scrifyBody {
 			width: clamp(20rem, 50%, 100%);
 			display: flex;
@@ -112,22 +135,37 @@
 		}
 	}
 
+	.confetti-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+
 	.sucessMessage {
-		padding: 1rem 2rem;
+		padding: 2rem 2rem;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 		border-radius: 4px;
 		display: flex;
 		gap: 1.9rem;
 		position: relative;
 		z-index: 20;
+		background-color: white;
+
+		.new-secret {
+			padding-top: 1.9rem;
+		}
 
 		@media screen and (max-width: 768px) {
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			gap: 2rem;
-			box-shadow: none;
+			padding: 2.3rem 3rem;
 			margin-top: -2rem;
+			width: 100%;
 
 			.sucessMessage__inner {
 				width: 100%;
@@ -135,6 +173,7 @@
 				display: flex;
 				flex-direction: column;
 				align-items: stretch;
+				text-align: center;
 			}
 		}
 
@@ -144,6 +183,8 @@
 			display: block;
 			background-color: #ecfdf5;
 			box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+			overflow-wrap: break-word;
+			text-align: left;
 		}
 	}
 </style>

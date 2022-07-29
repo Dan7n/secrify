@@ -31,7 +31,7 @@
 	}
 
 	.header-logo {
-		font-size: clamp(3.5rem, 5vw, 5rem);
+		font-size: clamp(3rem, 5vw, 5rem);
 		text-align: center;
 		padding-top: 2rem;
 		width: 100%;
@@ -48,10 +48,10 @@
 	.gradient-text {
 		background: linear-gradient(
 			to left,
-			rgb(0, 0, 0) 20%,
+			#4361ee 20%,
 			#ff006e 40%,
 			#ff006e 60%,
-			rgb(0, 0, 0) 80%
+			#4361ee 80%
 		);
 		background-size: 200% auto;
 

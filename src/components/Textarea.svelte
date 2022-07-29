@@ -1,4 +1,6 @@
 <script>
+	import { fly } from "svelte/transition";
+
 	export let secretText;
 	export let readonly = false;
 	export let labelText = "What text would you like to secrify?";
@@ -13,7 +15,11 @@
 	};
 </script>
 
-<label for="secretText" class="secretTextContainer">
+<label
+	for="secretText"
+	class="secretTextContainer"
+	in:fly={{ y: -30, duration: 1200, delay: 200 }}
+>
 	<p>{labelText}</p>
 	<textarea
 		id="secretText"

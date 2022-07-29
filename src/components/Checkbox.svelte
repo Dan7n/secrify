@@ -1,8 +1,14 @@
 <script>
-	export let oneTimeView = true
+	import { fly } from "svelte/transition";
+	export let oneTimeView = true;
 </script>
 
-<label>
-    <input type="checkbox" id="oneTimeView" name="oneTimeView" bind:checked={oneTimeView} />
-    One-time secret?
+<label in:fly={{ y: -30, duration: 1200, delay: 280 }}>
+	<input
+		type="checkbox"
+		id="oneTimeView"
+		name="oneTimeView"
+		bind:checked={oneTimeView}
+	/>
+	One-time secret?
 </label>

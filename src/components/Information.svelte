@@ -1,4 +1,9 @@
-<section>
+<script>
+	import { fly } from "svelte/transition";
+</script>
+
+<section in:fly={{ y: -30, duration: 1200, delay: 100 }}
+>
 	<h1>How this works 📚</h1>
 	<p>
 		Secrify is an simple applicaton that allows you to share secret, encrypted
