@@ -2,6 +2,7 @@ import CryptoJS from "crypto-js";
 import AES from "crypto-js/tripledes";
 import dotenv from "dotenv";
 dotenv.config();
+import { hasSecretExpired } from "./dateUtils";
 
 export const encryptMessage = (secretMessage = "") => {
 	const encrypted = AES.encrypt(
@@ -21,5 +22,5 @@ export const decryptMessage = (encryptedMessage) => {
 
 export const shouldSecretBeDeleted = (secret) => {
 	if (!secret) return true
-	return secret.oneTimeView
+	return secret.oneTimeView || hasSecretExpired(secret).expired
 }

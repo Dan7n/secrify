@@ -21,21 +21,20 @@ export async function POST({ request }) {
     }
 
     const {expired, reason} = hasSecretExpired(data[0])
-    if (expired) return {
-        status: 500,
-        body: {
-            message: "Secret could now be retrieved: " + reason
+    if (expired) {
+        await deleteSecretBySecretId(data[0]?.secretId)
+        return {
+            status: 500,
+            body: {
+                message: "Secret could now be retrieved: " + reason
+            }
         }
-    }
-
-    if (!data[0]?.encryptedMessage) {
-
     }
     
     const encryptedMessage = data[0]?.encryptedMessage
     const decrypted = decryptMessage(encryptedMessage)
     const shouldBeDeleted = shouldSecretBeDeleted(data[0])
-
+    console.log({shouldBeDeleted})
     if (shouldBeDeleted) {
         await deleteSecretBySecretId(data[0]?.secretId)
     }

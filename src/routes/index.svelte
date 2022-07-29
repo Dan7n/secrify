@@ -74,14 +74,13 @@
 			<div>
 				<LottieSuccess />
 			</div>
-			<div>
+			<div class="sucessMessage__inner">
 				<p>
 					Your secret has successfully been created! Visit the following URL to
 					decrypt the secret message:
 				</p>
 				<code>{currentPageUrl}{secretId}</code>
-				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99"
-					>Copy URL</CopyButton
+				<CopyButton textToCopy={currentPageUrl + secretId} color="#27CF99">Copy URL</CopyButton
 				>
 			</div>
 		</section>
@@ -91,7 +90,8 @@
 <style lang="scss">
 	main {
 		width: 100%;
-		height: calc(100vh - 4rem);
+		height: 100%;
+		padding-top: 8rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -99,7 +99,7 @@
 		gap: 5rem;
 
 		#scrifyBody {
-			width: 40%;
+			width: clamp(20rem, 50%, 100%);
 			display: flex;
 			justify-content: center;
 			align-items: stretch;
@@ -109,7 +109,6 @@
 	}
 
 	.sucessMessage {
-		/* border: 1px solid red; */
 		padding: 1rem 2rem;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 		border-radius: 4px;
@@ -117,7 +116,23 @@
 		gap: 1.9rem;
 		position: relative;
 		z-index: 20;
-		margin-top: -20rem;
+
+		@media screen and (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 2rem;
+			box-shadow: none;
+			margin-top: -2rem;
+
+			.sucessMessage__inner {
+				width: 100%;
+				padding-top: 1.3rem;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+			}
+		}
 
 		code {
 			margin-top: 1rem;

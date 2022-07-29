@@ -24,6 +24,7 @@
 		"@lottiefiles/lottie-player": "^1.5.7",
 		"@supabase/supabase-js": "^1.35.4",
 		"crypto-js": "^4.1.1",
+		"date-fns": "^2.29.1",
 		"svelte-preprocess": "^4.10.7"
 	}
 }

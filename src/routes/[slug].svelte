@@ -34,15 +34,14 @@
 	let isSecretFound = getSecretFromDb();
 
 	const handleCopySecret = (secretMessage) => {
-		navigator.clipboard.writeText(secretMessage)
-		success("Secret successfully copied to clipboard")
-	}
+		navigator.clipboard.writeText(secretMessage);
+		success("Secret successfully copied to clipboard");
+	};
 
 	onMount(async () => {
 		isSecretFound = await getSecretFromDb();
 		console.log({ isSecretFound });
 	});
-
 </script>
 
 {#await isSecretFound then decryptedMessage}
@@ -60,6 +59,9 @@
 				labelText="Secret message content:"
 			/>
 			<CopyButton textToCopy={secretText}>Copy message</CopyButton>
+			<p class="new-secret found">
+				Click <a href="/">here</a> to create a new secret.
+			</p>
 		</div>
 		<div class="lottie-container">
 			<LottieUnlocked />
@@ -96,7 +98,7 @@
 		flex-direction: row;
 		width: 100%;
 		justify-content: space-around;
-		align-items: center;
+		align-items: flex-end;
 		padding: 0 10%;
 
 		.secret-message-container--inner {
@@ -113,6 +115,19 @@
 
 		.lottie-container {
 			max-width: 35%;
+			filter: opacity(0.9);
+
+			@media screen and (max-width: 1000px) {
+				display: none;
+			}
+		}
+
+		.found {
+			margin-top: 2.6rem;
+			a {
+				color: hsl(204, 100%, 30%);
+				font-weight: bold;
+			}
 		}
 
 		.not-available {

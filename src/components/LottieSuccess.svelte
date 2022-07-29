@@ -1,7 +1,6 @@
 <script>
 	let lottiePlayer;
 	import { onMount } from "svelte";
-	// import { LottiePlayer } from "@lottiefiles/svelte-lottie-player";
 	onMount(async () => {
 		lottiePlayer = (await import("@lottiefiles/lottie-player"));
 	});

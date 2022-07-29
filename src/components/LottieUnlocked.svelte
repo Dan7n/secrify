@@ -11,7 +11,7 @@
 		src="https://assets1.lottiefiles.com/packages/lf20_qf1pt6ua.json"
 		background="transparent"
 		speed="1"
-		style="width: 400px; height: 400px;"
+		style="width: 320px; height: 320px;"
 		autoplay
 	/>
 {/if}

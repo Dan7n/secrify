@@ -1,22 +1,24 @@
-export const formatDate = (dateStamp) => new Date(dateStamp).toISOString().toLocaleString("sv_SE")
+import { formatISO, isPast, parseISO } from "date-fns";
+
+export const formatDate = (dateStamp) => formatISO(new Date(dateStamp));
 
 export const hasSecretExpired = (secret) => {
-    if (!secret) return {
-        expired: true,
-        reason: "No secret ID"
-    }
-    const expirationDate = new Date(secret.expirationDate)
-    const now = new Date()
+	if (!secret)
+		return {
+			expired: true,
+			reason: "No secret ID",
+		};
+	const expirationDate = parseISO(secret.expirationDate);
 
-    if (expirationDate > now) {
-        return {
-            expired: true,
-            reason: "Expiration date has passed"
-        }
-    }
+	if (isPast(expirationDate)) {
+		return {
+			expired: true,
+			reason: "Expiration date has passed",
+		};
+	}
 
-    return {
-        expired: false,
-        reason: ""
-    }
-}
+	return {
+		expired: false,
+		reason: "",
+	};
+};

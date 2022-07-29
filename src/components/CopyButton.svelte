@@ -1,7 +1,7 @@
 <script>
     import { success } from "./../lib/utils/toast"
     export let textToCopy
-    export let color = "#b4e1ff"
+    export let color = "linear-gradient(to left, hsl(204, 100%, 85%) 0%, hsl(204, 100%, 75%) 100%)"
 
     const handleCopySecret = (textToCopy) => {
         if (!textToCopy) return
@@ -10,7 +10,7 @@
     }
 </script>
 
-<button class="copy-message" on:click={() => handleCopySecret(textToCopy)} style="background-color: {color};"><slot /></button>
+<button class="copy-message" on:click={() => handleCopySecret(textToCopy)} style="background: {color};"><slot /></button>
 
 <style lang="scss">
 		.copy-message {
@@ -20,6 +20,7 @@
 			border-radius: 4px;
 			cursor: pointer;
 			transition: all 300ms ease;
+			background: hsl(204, 100%, 70%);
 
 			&:hover {
 				transform: scale(1.03);
