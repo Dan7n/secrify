@@ -2,7 +2,6 @@
 	export let secretText;
 	export let readonly = false;
 	export let labelText = "What text would you like to secrify?";
-	export let isTextareaError = false;
 
 	const handleChange = (e) => {
 		const { value } = e.target;
@@ -21,7 +20,6 @@
 		on:change={handleChange}
 		bind:value={secretText}
 		{readonly}
-		style="border-color: {isTextareaError ? '#d90429' : 'transparent'};"
 		spellcheck="false"
 	/>
 </label>

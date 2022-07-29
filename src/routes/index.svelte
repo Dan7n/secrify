@@ -32,11 +32,9 @@
 	let secretText = "";
 	let oneTimeView = true;
 	let secretId;
-	let isTextareaError
 
 	const sendRequest = async () => {
 		if (!secretText || !secretText.trim()) {
-			isTextareaError = true
 			return danger("Please add a valid secret body");
 		}
 
@@ -62,7 +60,7 @@
 	{#if !secretId}
 		<section id="scrifyBody" in:fade out:fly={{ x: 20, duration: 400 }}>
 			<Information />
-			<Textarea bind:secretText isTextareaError={isTextareaError}  />
+			<Textarea bind:secretText  />
 			<Dropdown options={dropdownOptions} bind:selected={selectedDuration} />
 			<Checkbox bind:oneTimeView />
 			<SubmitBtn handleSubmit={sendRequest} />

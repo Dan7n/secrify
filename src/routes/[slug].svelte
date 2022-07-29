@@ -94,7 +94,7 @@
 		width: 100%;
 		justify-content: space-around;
 		align-items: flex-end;
-		padding: 0 10%;
+		padding: 0 13%;
 
 		.secret-message-container--inner {
 			margin-top: 5rem;
