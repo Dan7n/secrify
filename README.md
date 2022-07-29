@@ -1,38 +1,17 @@
-# create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+# Secrify
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm init svelte
+A simple application that allows you to store and share encrypted secrets (passwords, env variables, messages, etc.) via a simple URL. 
 
-# create a new project in my-app
-npm init svelte my-app
-```
+All secrets you created are encrypted data using a secure AES 256-bit algorithm - the same algorithm used by government agencies to store classified or sensitive information.
 
-## Developing
+This project was created using Sveltekit as a way for me to learn the framework (and I have to say I'm in love ❤️)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```bash
-npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Demo
 
-## Building
+https://secrify.vercel.app/
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
