@@ -8,6 +8,7 @@
 	import Textarea from "./../components/Textarea.svelte";
 	import CopyButton from "../components/CopyButton.svelte";
 	import { fade, fly } from "svelte/transition";
+import SecretHead from "../components/SecretHead.svelte";
 
 	let secretId = $page.params.slug;
 	let secretText;
@@ -35,10 +36,10 @@
 
 	onMount(async () => {
 		isSecretFound = await getSecretFromDb();
-		console.log({ isSecretFound });
 	});
 </script>
 
+<SecretHead />
 {#await isSecretFound then decryptedMessage}
 	<section class="secret-message-container" in:fly={{ x: -20, duration: 800 }}>
 		<div class="secret-message-container--inner">

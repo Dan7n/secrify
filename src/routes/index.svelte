@@ -12,6 +12,7 @@
 	import LottieSuccess from "../components/LottieSuccess.svelte";
 	import LottieConfetti from "../components/LottieConfetti.svelte";
 	import CopyButton from "../components/CopyButton.svelte";
+	import IndexHead from "../components/IndexHead.svelte";
 
 	// Utils
 	import { danger } from "./../lib/utils/toast";
@@ -59,6 +60,8 @@
 	};
 </script>
 
+
+<IndexHead />
 {#if readyToAnimate}
 	<main>
 		{#if !secretId}
