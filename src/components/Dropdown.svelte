@@ -4,7 +4,7 @@
   export let selected = { displayText: "30 Minutes", value: 1800000 };
 </script>
 
-<label for="durationDropdown" class="selectLabel" in:fly={{ y: -30, duration: 1200, delay: 280 }}>
+<label for="durationDropdown" class="selectLabel" in:fly={{ y: -30, duration: 1200, delay: 550 }}>
   How long would you like your secret to last?
   <select class="selectColor" id="durationDropdown" bind:value={selected}>
     {#each options as { displayText, value }}

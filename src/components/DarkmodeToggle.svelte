@@ -17,7 +17,7 @@
     --hide-animation: scale(0) rotate(360deg);
     --show-animation: scale(1.2) rotate(-360deg);
     --transition-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --toggle-width: 3.9rem;
+    --toggle-width: 4.2rem;
     --shadow-color: 254deg 10% 39%;
     --shadow-elevation-low: 0.3px 0.5px 0.6px hsl(var(--shadow-color) / 0.45),
       0.4px 0.8px 0.9px -1.6px hsl(var(--shadow-color) / 0.38), 1px 2px 2.3px -3.2px hsl(var(--shadow-color) / 0.31);
@@ -37,6 +37,7 @@
     position: absolute;
     top: 1.5rem;
     left: 1.5rem;
+    width: var(--toggle-width);
   }
 
   input {
@@ -66,7 +67,8 @@
   }
   .toggle-wrapper {
     background-color: #e0f2fe;
-    width: var(--toggle-width);
+    /* width: var(--toggle-width); */
+    width: 100%;
     height: 1.7rem;
     border-radius: 34px;
     display: -webkit-box;

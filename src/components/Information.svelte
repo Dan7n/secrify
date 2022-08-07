@@ -2,7 +2,7 @@
 	import { fly } from "svelte/transition";
 </script>
 
-<section in:fly={{ y: -30, duration: 1200, delay: 100 }}
+<section in:fly={{ y: -30, duration: 1200, delay: 300 }}
 >
 	<h1>How this works 📚</h1>
 	<p>

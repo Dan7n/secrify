@@ -42,8 +42,6 @@
 	let oneTimeView = true;
 	let secretId;
 
-	console.log($isDarkMode)
-
 	const sendRequest = async () => {
 		if (!secretText || !secretText.trim()) {
 			return danger("Please add a valid secret body");

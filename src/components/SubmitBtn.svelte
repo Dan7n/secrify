@@ -4,7 +4,7 @@
   export let handleSubmit;
 </script>
 
-<button id="submitBtn" class={$isDarkMode ? "dark" : "light"} on:click={handleSubmit} in:fly={{ y: -30, duration: 1200, delay: 320 }}>🔏 Secrify</button>
+<button id="submitBtn" class={$isDarkMode ? "dark" : "light"} on:click={handleSubmit} in:fly={{ y: -30, duration: 1200, delay: 720 }}>🔏 Secrify</button>
 
 <style lang="scss">
   #submitBtn {
