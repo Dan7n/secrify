@@ -42,6 +42,7 @@
     -webkit-transition: all 400ms ease;
     -o-transition: all 400ms ease;
     transition: all 400ms ease;
+	-webkit-appearance: none;
 
     &:focus {
       outline: none;
