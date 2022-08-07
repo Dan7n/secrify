@@ -42,6 +42,10 @@
 	let oneTimeView = true;
 	let secretId;
 
+	const handleResetPage = () => {
+		secretId = null;
+	};
+
 	const sendRequest = async () => {
 		if (!secretText || !secretText.trim()) {
 			return danger("Please add a valid secret body");
@@ -109,7 +113,7 @@
 						class="new-secret"
 						in:fly={{ x: 100, duration: 2000, delay: 1000 }}
 					>
-						Click <a href="/">here</a> to create a new secret.
+						Click <a href="/" on:click={handleResetPage}>here</a> to create a new secret.
 					</p>
 				</div>
 			</section>

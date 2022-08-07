@@ -4,20 +4,11 @@
   export let secretText;
   export let readonly = false;
   export let labelText = "What text would you like to secrify?";
-
-  const handleChange = e => {
-    const { value } = e.target;
-    if (isTextareaError && value.length !== 0) {
-      isTextareaError = false;
-    } else {
-      isTextareaError = true;
-    }
-  };
 </script>
 
 <label for="secretText" class="secretTextContainer" in:fly={{ y: -30, duration: 1200, delay: 450 }}>
   <p>{labelText}</p>
-  <textarea id="secretText" on:change={handleChange} bind:value={secretText} {readonly} spellcheck="false" />
+  <textarea id="secretText" bind:value={secretText} {readonly} spellcheck="false" />
 </label>
 
 <style lang="scss">
