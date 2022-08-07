@@ -3,7 +3,7 @@
 	export let oneTimeView = true;
 </script>
 
-<label in:fly={{ y: -30, duration: 1200, delay: 280 }}>
+<label in:fly={{ y: -30, duration: 1200, delay: 650 }}>
 	<input
 		type="checkbox"
 		id="oneTimeView"

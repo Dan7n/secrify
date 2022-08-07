@@ -15,7 +15,7 @@
   };
 </script>
 
-<label for="secretText" class="secretTextContainer" in:fly={{ y: -30, duration: 1200, delay: 200 }}>
+<label for="secretText" class="secretTextContainer" in:fly={{ y: -30, duration: 1200, delay: 450 }}>
   <p>{labelText}</p>
   <textarea id="secretText" on:change={handleChange} bind:value={secretText} {readonly} spellcheck="false" />
 </label>
@@ -42,6 +42,7 @@
     -webkit-transition: all 400ms ease;
     -o-transition: all 400ms ease;
     transition: all 400ms ease;
+	-webkit-appearance: none;
 
     &:focus {
       outline: none;

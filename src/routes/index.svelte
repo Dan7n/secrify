@@ -3,6 +3,10 @@
 	import { quintOut } from "svelte/easing";
 	import { onMount } from "svelte";
 
+	// Stores
+	import { isDarkMode } from "./../stores";
+	import { session } from "$app/stores"
+
 	// Components
 	import Textarea from "../components/Textarea.svelte";
 	import Dropdown from "./../components/Dropdown.svelte";
@@ -20,6 +24,7 @@
 
 	let currentPageUrl;
 	let readyToAnimate = false;
+	
 	onMount(() => {
 		readyToAnimate = true;
 		if (!window) return;
