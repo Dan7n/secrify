@@ -1,7 +1,12 @@
 <script>
+	import { isDarkMode } from "../stores";
     import { success } from "./../lib/utils/toast"
     export let textToCopy
     export let color = "linear-gradient(to left, hsl(204, 100%, 85%) 0%, hsl(204, 100%, 75%) 100%)"
+	
+	isDarkMode.subscribe(isDarkModeEnabled => {
+		color = isDarkModeEnabled ? "linear-gradient(to left, hsl(204, 100%, 55%) 0%, hsl(204, 100%, 65%) 100%)" : "linear-gradient(to left, hsl(204, 100%, 85%) 0%, hsl(204, 100%, 75%) 100%)"
+	})
 
     const handleCopySecret = (textToCopy) => {
         if (!textToCopy) return

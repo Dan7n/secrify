@@ -1,14 +1,19 @@
 <script>
 	import { page } from "$app/stores";
+	import { isDarkMode } from "./../stores";
 	import { onMount } from "svelte";
+
+	// Utils
 	import { success } from "./../lib/utils/toast";
+	import { fly } from "svelte/transition";
+
+	// Components
 	import Toast from "../components/Toast.svelte";
 	import LottieNotFound from "./../components/LottieNotFound.svelte";
 	import LottieUnlocked from "../components/LottieUnlocked.svelte";
 	import Textarea from "./../components/Textarea.svelte";
 	import CopyButton from "../components/CopyButton.svelte";
-	import { fade, fly } from "svelte/transition";
-import SecretHead from "../components/SecretHead.svelte";
+	import SecretHead from "../components/SecretHead.svelte";
 
 	let secretId = $page.params.slug;
 	let secretText;

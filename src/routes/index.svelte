@@ -89,7 +89,7 @@
 			<section
 				in:fly={{ y: 200, duration: 2000, delay: 400 }}
 				out:fade
-				class="sucessMessage"
+				class={`sucessMessage ${$isDarkMode ? "dark" : ""}`}
 			>
 				<div>
 					<LottieSuccess />
@@ -99,10 +99,10 @@
 						Your secret has successfully been created! Visit the following URL
 						to decrypt the secret message:
 					</p>
-					<code>{currentPageUrl}{secretId}</code>
+					<code class={$isDarkMode ? "dark-code" : ""}>{currentPageUrl}{secretId}</code>
 					<CopyButton
 						textToCopy={currentPageUrl + secretId}
-						color="linear-gradient(to left, hsl(152, 81%, 90%) 0%, hsl(152, 81%, 83%) 100%)"
+						color={$isDarkMode ? "linear-gradient(to left, hsl(152, 81%, 30%) 0%, hsl(152, 81%, 43%) 100%)" : "linear-gradient(to left, hsl(152, 81%, 90%) 0%, hsl(152, 81%, 83%) 100%)"}
 						>Copy URL</CopyButton
 					>
 					<p
@@ -194,5 +194,12 @@
 			overflow-wrap: break-word;
 			text-align: left;
 		}
+		.dark-code {
+			background-color: #626765;
+		}
+	}
+
+	.dark {
+		background-color: #3B3B3B;
 	}
 </style>
